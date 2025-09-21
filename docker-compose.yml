@@ -1,0 +1,45 @@
+services:
+  frontend:
+    build:
+      context: ./next-app
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    networks:
+      - app-network
+  
+  nginx:
+    build:
+      image: nginx:stable-alpine3.21-perl
+      restart: unless-stopped
+      ports:
+        - 80:80
+      volumes:
+        - web-root:/var/www/certbot
+        - ./nginx-conf:/etc/nginx/conf.d
+        - certbot-etc:/etc/letsencrypt
+        - certbot-var:/var/lib/letsencrypt
+      depends_on:
+        - frontend
+      networks:
+        - app-network
+
+    certbot:
+      image: certbot/certbot
+      volumes:
+        - certbot-etc:/etc/letsencrypt
+        - certbot-var:/var/lib/letsencrypt
+        - web-root:/var/www/certbot
+      depends_on:
+        - nginx
+      command: certonly --webroot --webroot-path=/var/www/certbot --email sekosmetics@gmail.com --agree-tos --no-eff-email --staging -d staging.sekosmetics.com
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  web-root:
+  certbot-etc:
+  certbot-var:

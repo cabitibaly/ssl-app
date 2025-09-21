@@ -1,0 +1,79 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+    --color-noir: #0F171A; 
+    --color-fonce-800: #141E22;
+    --color-fonce-600: #1A262D;
+    --color-fonce-400: #283943;
+    --color-fonce-200: #2E414D;
+    --color-vert: #39DB7D;
+    --color-vert-citron: #BBEF20;
+    --color-jaune: #FFEA00;
+    --color-rouge: #F95454;
+    --color-orange: #FF9D23;
+    --color-bleu: #338DFF;
+    --breakpoint-xs: 30rem;
+    --breakpoint-xxs: 20rem;
+}
+
+.p-datepicker {
+    @apply rounded-xl border border-blue-400/30;
+}
+
+.p-calendar {
+    @apply w-[200px];
+}
+
+
+#calendar .p-inputtext {
+    @apply rounded-2xl border border-gray-200 hover:border-gray-500;
+}
+
+#calendar input {
+    @apply ring-0 focus:ring-gray-300 focus:border-gray-300  border;
+}
+
+/* .p-dropdown {
+    @apply w-full border border-red-300;
+} */
+
+.p-dropdown {
+    @apply w-full h-[39px] rounded-lg flex items-center justify-center bg-transparent border text-gray-300 border-fonce-400 ring-0;
+}
+
+.p-dropdown-label {
+    @apply text-lg font-semibold text-gray-300
+}
+
+#upload .p-badge {
+    @apply hidden;
+}
+
+#upload .p-button-danger {
+    @apply bg-transparent border-none hover:bg-rouge/30  text-red-400;
+}
+
+#upload .p-fileupload-buttonbar {
+    @apply bg-transparent border-none border-fonce-400;
+}
+
+#upload .p-fileupload-content {
+    @apply bg-transparent  border-none border-fonce-400;
+}
+
+#upload .p-button:not(.p-button-danger) {
+    @apply bg-bleu p-2 text-white;
+}
+
+#upload .p-fileupload-filename {
+    @apply text-gray-400;
+}
+
+.text-size {
+  font-size: 5.375vw;
+}
+
+.text-size-1 {
+  font-size: 2vw;
+}

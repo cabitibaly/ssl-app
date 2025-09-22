@@ -37,7 +37,7 @@ services:
       - web-root:/var/www/certbot
     depends_on:
       - nginx
-    command: certonly --webroot --webroot-path=/var/www/certbot --email root@staging.com --agree-tos --no-eff-email --staging -d staging.com
+    command: certonly --webroot --webroot-path=/var/www/certbot --email sekosmetics@gmail.com --agree-tos --no-eff-email --staging -d staging.com
 
 networks:
   app-network:
